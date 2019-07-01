@@ -25,8 +25,12 @@ let recentEvents = [];
 
 // Serve static files and start the server
 monitor.use(express.static(path.join(__dirname, "public")));
-monitorServer.listen(config.port, () => {
-  console.log(`Stripe Monitor is up: http://localhost:${config.port}`);
+// monitorServer.listen(config.port, () => {
+//   console.log(`Stripe Monitor is up: http://localhost:${config.port}`);
+// });
+
+monitorServer.listen(process.env.PORT || config.port, () => {
+  console.log(`Stripe Monitor is up: http://localhost:${process.env.PORT} or http://localhost:${config.port}`);
 });
 
 // Provides environment details: the Dashboard URL will vary based on whether we're in test or live mode
